@@ -9,7 +9,7 @@ export async function getRecommendedUsers(req, res) {
     const recommonededUsers = await User.find({
       $and: [
         { _id: { $ne: currentUserId } }, // ne- not includes
-        { $id: { $nin: currentUser.friends } }, //nin -not in
+        { _id: { $nin: currentUser.friends } }, //nin -not in
         { isOnboarded: true },
       ],
     });
@@ -102,7 +102,7 @@ export async function acceptFriendRequest(req, res) {
       });
     }
 
-    if (friendRequest.recipient.toString() === req.user.id) {
+    if (friendRequest.recipient.toString() !== req.user.id) {
       return res.status(403).json({
         message: "You are not authorized to accept this request",
       });
