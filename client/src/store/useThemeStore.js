@@ -1,9 +1,0 @@
-import { create } from "zustand";
-
-export const useThemeStore = create((set) => ({
-  theme: localStorage.getItem("LinkSphere-theme") || "night",
-  setTheme: (theme) => {
-    localStorage.setItem("LinkSphere-theme", theme);
-    set({ theme });
-  },
-}));
