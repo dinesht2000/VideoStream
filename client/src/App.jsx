@@ -73,7 +73,7 @@ function App() {
           path="/call/:id"
           element={
             isAuthenticated && isOnboarded ? (
-              <Layout showSidebar={true}>
+              <Layout showSidebar={false}>
                 <CallPage/>
               </Layout>
             ):(
